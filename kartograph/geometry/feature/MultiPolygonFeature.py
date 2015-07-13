@@ -1,4 +1,5 @@
-from Feature import Feature
+from __future__ import absolute_import
+from .Feature import Feature
 from kartograph.errors import KartographError
 from kartograph.simplify.unify import unify_rings
 
@@ -113,12 +114,12 @@ class MultiPolygonFeature(Feature):
         polygons = []
         holes_total = 0
         for num_hole in self._topology_num_holes:
-            ext = ring_iter.next()
-            island = islands_iter.next()
+            ext = next(ring_iter)
+            island = next(islands_iter)
             holes = []
             while num_hole > 0:
-                hole = ring_iter.next()
-                islands_iter.next()  # skip island flag for holes
+                hole = next(ring_iter)
+                next(islands_iter)  # skip island flag for holes
                 if len(hole) > 3:
                     holes.append(hole)
                 holes_total += 1

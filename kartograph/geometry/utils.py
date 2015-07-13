@@ -1,6 +1,7 @@
 """
 geometry utils
 """
+from __future__ import absolute_import
 
 
 def is_clockwise(pts):
@@ -61,7 +62,7 @@ def geom_to_bbox(geom, min_area=0):
 def join_features(features, props, buf=False):
     """ joins polygonal features
     """
-    from feature import MultiPolygonFeature, MultiLineFeature
+    from .feature import MultiPolygonFeature, MultiLineFeature
     from shapely.ops import linemerge
 
     if len(features) == 0:

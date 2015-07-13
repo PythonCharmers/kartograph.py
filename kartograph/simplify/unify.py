@@ -1,5 +1,6 @@
+from __future__ import absolute_import
 
-from mpoint import MPoint
+from .mpoint import MPoint
 
 """
 the whole point of the unification step is to convert all points into unique MPoint instances

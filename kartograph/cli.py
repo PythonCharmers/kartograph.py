@@ -2,11 +2,13 @@
 """
 command line interface for kartograph
 """
+from __future__ import print_function
+from __future__ import absolute_import
 
 import argparse
 import os
 import os.path
-from options import read_map_config
+from .options import read_map_config
 import sys
 
 
@@ -37,7 +39,7 @@ parser.add_argument('--format', '-f', metavar='svg', help='output format, if not
 parser.add_argument('--preview', '-p', nargs='?', metavar='', const=True, help='opens the generated svg for preview')
 parser.add_argument('--pretty-print', '-P', dest='pretty_print', action='store_true', help='pretty print the svg file')
 
-from kartograph import Kartograph
+from .kartograph import Kartograph
 import time
 import os
 
@@ -74,7 +76,7 @@ def render_map(args):
             # print str(r)
             pass
 
-    except Exception, e:
+    except Exception as e:
         print_error(e)
         exit(-1)
 
@@ -98,17 +100,17 @@ def main():
 
     try:
         args = parser.parse_args()
-    except IOError, e:
+    except IOError as e:
         # parser.print_help()
         sys.stderr.write('\n' + str(e) + '\n')
-    except Exception, e:
+    except Exception as e:
         parser.print_help()
-        print '\nError:', e
+        print('\nError:', e)
     else:
         args.func(args)
         elapsed = (time.time() - start)
         if args.output != '-':
-            print 'execution time: %.3f secs' % elapsed
+            print('execution time: %.3f secs' % elapsed)
 
     sys.exit(0)
 

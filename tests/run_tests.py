@@ -1,3 +1,4 @@
+from __future__ import print_function
 from kartograph import Kartograph
 import sys
 from os import mkdir, remove
@@ -11,10 +12,10 @@ for path in ('data', 'results'):
 
 if not exists('data/ne_50m_admin_0_countries.shp'):
     # download natural earth shapefile
-    print 'I need a shapefile to test with. Will download one from naturalearthdata.com\n'
+    print('I need a shapefile to test with. Will download one from naturalearthdata.com\n')
     from subprocess import call
     call(['wget', 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip'])
-    print '\nUnzipping...\n'
+    print('\nUnzipping...\n')
     call(['unzip', 'ne_50m_admin_0_countries.zip', '-d', 'data'])
 
 passed = 0
@@ -24,7 +25,7 @@ log = open('log.txt', 'w')
 
 for fn in glob('configs/*.*'):
     fn_parts = splitext(basename(fn))
-    print 'running text', basename(fn), '...',
+    print('running text', basename(fn), '...', end=' ')
     try:
         cfg = read_map_config(open(fn))
         K = Kartograph()
@@ -36,9 +37,9 @@ for fn in glob('configs/*.*'):
         if exists(svg_url):
             remove(svg_url)
         K.generate(cfg, 'results/' + fn_parts[0] + '.svg', preview=False, format='svg', stylesheet=css)
-        print 'ok.'
+        print('ok.')
         passed += 1
-    except Exception, e:
+    except Exception as e:
         import traceback
         ignore_path_len = len(__file__) - 7
         exc = sys.exc_info()
@@ -47,7 +48,7 @@ for fn in glob('configs/*.*'):
             log.write('  %s, in %s()\n  %d: %s\n' % (filename, func, line, code))
         log.write('\n')
         log.write(str(e))
-        print 'failed.'
+        print('failed.')
         failed += 1
 
-print 'passed: %d\nfailed: %d' % (passed, failed)
+print('passed: %d\nfailed: %d' % (passed, failed))

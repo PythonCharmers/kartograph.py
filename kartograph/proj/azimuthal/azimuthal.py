@@ -15,6 +15,7 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
+from __future__ import print_function
 
 import math
 from kartograph.proj.base import Proj
@@ -62,7 +63,7 @@ class Azimuthal(Proj):
     def sea_shape(self, llbbox=(-180, -90, 180, 90)):
         out = []
         if llbbox == (-180, -90, 180, 90) or llbbox == [-180, -90, 180, 90]:
-            print "-> full extend"
+            print("-> full extend")
             for phi in range(0, 360):
                 x = self.r + math.cos(math.radians(phi)) * self.r
                 y = self.r + math.sin(math.radians(phi)) * self.r

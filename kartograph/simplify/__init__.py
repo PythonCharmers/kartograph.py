@@ -1,10 +1,11 @@
+from __future__ import absolute_import
 
 __all__ = ['create_point_store', 'unify_polygon', 'unify_polygons', 'simplify_lines']
 
-from unify import *
-from distance import simplify_distance
-from douglas_peucker import simplify_douglas_peucker
-from visvalingam import simplify_visvalingam_whyatt
+from .unify import *
+from .distance import simplify_distance
+from .douglas_peucker import simplify_douglas_peucker
+from .visvalingam import simplify_visvalingam_whyatt
 
 
 simplification_methods = dict()

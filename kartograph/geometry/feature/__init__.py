@@ -2,13 +2,14 @@
 """
 package geometry.feature
 """
+from __future__ import absolute_import
 
 __all__ = ['Feature', 'MultiPolygonFeature', 'create_feature', 'MultiLineFeature', 'PointFeature']
 
-from Feature import Feature
-from MultiPolygonFeature import MultiPolygonFeature
-from MultiLineFeature import MultiLineFeature
-from PointFeature import PointFeature
+from .Feature import Feature
+from .MultiPolygonFeature import MultiPolygonFeature
+from .MultiLineFeature import MultiLineFeature
+from .PointFeature import PointFeature
 
 
 def create_feature(geom, props):

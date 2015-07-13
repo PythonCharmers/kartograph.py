@@ -1,5 +1,6 @@
+from __future__ import absolute_import
 
-from point import Point
+from .point import Point
 
 
 class BBox(object):
@@ -7,15 +8,15 @@ class BBox(object):
     def __init__(self, width=None, height=None, left=0, top=0):
         import sys
         if width == None:
-            self.xmin = sys.maxint
-            self.xmax = sys.maxint * -1
+            self.xmin = sys.maxsize
+            self.xmax = sys.maxsize * -1
         else:
             self.xmin = self.left = left
             self.xmax = self.right = left + width
             self.width = width
         if height == None:
-            self.ymin = sys.maxint
-            self.ymax = sys.maxint * -1
+            self.ymin = sys.maxsize
+            self.ymax = sys.maxsize * -1
         else:
             self.ymin = self.top = top
             self.ymax = self.bottom = height + top

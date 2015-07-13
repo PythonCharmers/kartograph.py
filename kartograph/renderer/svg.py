@@ -1,3 +1,4 @@
+from __future__ import print_function
 
 from kartograph.renderer import MapRenderer
 from kartograph.errors import KartographError
@@ -420,7 +421,7 @@ class SvgDocument(object):
         try:
             raw = raw.encode('utf-8')
         except:
-            print 'warning: could not encode to unicode'
+            print('warning: could not encode to unicode')
 
         outfile.write(raw)
         outfile.close()
@@ -431,7 +432,7 @@ class SvgDocument(object):
         import tempfile
         tmpfile = tempfile.NamedTemporaryFile(suffix='.svg', delete=False)
         self.write(tmpfile, pretty_print)
-        print 'map stored to', tmpfile.name
+        print('map stored to', tmpfile.name)
         from subprocess import call
         call([command, tmpfile.name])
 

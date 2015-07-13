@@ -3,10 +3,11 @@
 API 2.0
 helper methods for validating options dictionary
 """
+from __future__ import absolute_import
 
 import os.path
-import proj
-import errors
+from . import proj
+from . import errors
 import sys
 
 Error = errors.KartographError
@@ -40,7 +41,7 @@ def read_map_config(f):
             return cfg
     elif ext in ('.yaml', '.yml'):
         import yaml
-        from yaml_ordered_dict import OrderedDictYAMLLoader
+        from .yaml_ordered_dict import OrderedDictYAMLLoader
         try:
             cfg = yaml.load(content, OrderedDictYAMLLoader)
         except Exception:

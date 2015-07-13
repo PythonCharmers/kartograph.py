@@ -15,8 +15,9 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
+from __future__ import absolute_import
 
-from azimuthal import Azimuthal
+from .azimuthal import Azimuthal
 import math
 
 
@@ -41,8 +42,8 @@ class Satellite(Azimuthal):
         self.tilt_ = math.radians(tilt)
 
         self.scale = 1
-        xmin = sys.maxint
-        xmax = sys.maxint * -1
+        xmin = sys.maxsize
+        xmax = sys.maxsize * -1
         for lat in range(0, 180):
             for lon in range(0, 361):
                 x, y = self.project(lon - 180, lat - 90)

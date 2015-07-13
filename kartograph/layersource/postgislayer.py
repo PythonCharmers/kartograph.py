@@ -1,5 +1,7 @@
+from __future__ import print_function
+from __future__ import absolute_import
 
-from layersource import LayerSource
+from .layersource import LayerSource
 from kartograph.errors import *
 from kartograph.geometry import create_feature
 import shapely.wkb
@@ -76,7 +78,7 @@ class PostGISLayer(LayerSource):
                             try:
                                 meta[fields[f]] = rec[f].decode('utf-8')
                             except:
-                                print 'decoding error', fields[f], rec[f]
+                                print('decoding error', fields[f], rec[f])
                                 meta[fields[f]] = '--decoding error--'
                         else:
                             meta[fields[f]] = rec[f]

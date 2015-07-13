@@ -1,11 +1,13 @@
+from __future__ import print_function
+from __future__ import absolute_import
 
-from options import parse_options
+from .options import parse_options
 from shapely.geometry import Polygon, LineString, MultiPolygon
-from errors import *
+from .errors import *
 from copy import deepcopy
-from renderer import SvgRenderer
-from mapstyle import MapStyle
-from map import Map
+from .renderer import SvgRenderer
+from .mapstyle import MapStyle
+from .map import Map
 import os
 
 
@@ -64,14 +66,14 @@ class Kartograph(object):
                         command = commands[sys.platform]
                     else:
                         sys.stderr.write('don\'t know how to preview SVGs on your system. Try setting the KARTOGRAPH_PREVIEW environment variable.')
-                        print renderer
+                        print(renderer)
                         return
                 renderer.preview(command)
             # Write the map to a file or return the renderer instance.
             if outfile is None:
                 return renderer
             elif outfile == '-':
-                print renderer
+                print(renderer)
             else:
                 renderer.write(outfile)
         else:

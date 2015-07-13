@@ -5,14 +5,15 @@ as of version 2.0 kartograph supports multiple import formats
 - KML ? (only polygons and polylines)
 - GeoJSON ?
 """
+from __future__ import absolute_import
 
 __all__ = ['LayerSource', 'ShapefileLayer', 'CsvLayer', 'GraticuleLayer', 'PostGISLayer']
 
-from shplayer import ShapefileLayer
-from csvlayer import CsvLayer
-from postgislayer import PostGISLayer
-from layersource import LayerSource
-from special import GraticuleLayer, SeaLayer
+from .shplayer import ShapefileLayer
+from .csvlayer import CsvLayer
+from .postgislayer import PostGISLayer
+from .layersource import LayerSource
+from .special import GraticuleLayer, SeaLayer
 from kartograph.errors import *
 
 

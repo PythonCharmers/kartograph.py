@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 
 
 class MapRenderer(object):
@@ -9,12 +10,12 @@ class MapRenderer(object):
         pass
 
     def write(self, filename):
-        raise 'Not implemented yet'
+        raise NotImplementedError('Not implemented yet')
 
     def preview(self):
-        raise 'Not implemented yet'
+        raise NotImplementedError('Not implemented yet')
 
 
-from svg import SvgRenderer
+from .svg import SvgRenderer
 
 __all__ = ['MapRenderer', 'SvgRenderer']

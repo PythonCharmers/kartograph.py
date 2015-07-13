@@ -1,6 +1,7 @@
+from __future__ import absolute_import
 
-from layersource import handle_layer_source
-from filter import filter_record
+from .layersource import handle_layer_source
+from .filter import filter_record
 
 
 _verbose = False

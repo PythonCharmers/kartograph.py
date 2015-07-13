@@ -1,5 +1,6 @@
+from __future__ import absolute_import
 
-from layersource import LayerSource
+from .layersource import LayerSource
 from kartograph.errors import *
 from kartograph.geometry import BBox, create_feature
 from shapely.geometry import LineString, Point, Polygon
@@ -24,7 +25,7 @@ class CsvLayer(LayerSource):
             src = src.encode('ascii', 'ignore')
         self.cr = UnicodeReader(open(src), dialect=dialect)
         # read csv header
-        self.header = h = self.cr.next()
+        self.header = h = next(self.cr)
         # initialize CRS
         self.proj = None
         self.mode = mode
@@ -100,7 +101,7 @@ class UnicodeReader:
         self.reader = csv.reader(f, dialect=dialect, **kwds)
 
     def next(self):
-        row = self.reader.next()
+        row = next(self.reader)
         return [unicode(s, "utf-8") for s in row]
 
     def __iter__(self):

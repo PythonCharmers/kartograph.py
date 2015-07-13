@@ -2,6 +2,7 @@
 """
 computes a circle cartogram for a given svg map + data file
 """
+from __future__ import absolute_import
 import sys
 
 class Cartogram:
@@ -61,7 +62,7 @@ class Cartogram:
     def compute_radii(self):
         import sys, math
         minv = 0
-        maxv = sys.maxint * -1
+        maxv = sys.maxsize * -1
         for c in self.circles:
             minv = min(minv, c.value)
             maxv = max(maxv, c.value)
@@ -105,7 +106,7 @@ class Cartogram:
             C.move()
 
     def rescale(self):
-        from geometry import BBox, View
+        from .geometry import BBox, View
         svg = self.svg
         svg_view = svg[1][0][0]
         vh = float(svg_view['h'])

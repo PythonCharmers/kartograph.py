@@ -1,11 +1,13 @@
+from __future__ import print_function
+from __future__ import absolute_import
 from shapely.geometry import Polygon
 from shapely.geometry.base import BaseGeometry
-from maplayer import MapLayer
-from geometry.utils import geom_to_bbox
-from geometry import BBox, View
-from proj import projections
-from filter import filter_record
-from errors import KartographError
+from .maplayer import MapLayer
+from .geometry.utils import geom_to_bbox
+from .geometry import BBox, View
+from .proj import projections
+from .filter import filter_record
+from .errors import KartographError
 import sys
 
 # Map
@@ -154,7 +156,7 @@ class Map(object):
         ### Initialize bounding polygons and bounding box
         ### Compute the projected bounding box
         """
-        from geometry.utils import bbox_to_polygon
+        from .geometry.utils import bbox_to_polygon
 
         opts = self.options
         proj = self.proj
@@ -306,7 +308,7 @@ class Map(object):
         """
         ### Simplify geometries
         """
-        from simplify import create_point_store, simplify_lines
+        from .simplify import create_point_store, simplify_lines
 
         # We will use a glocal point cache for all layers. If the
         # same point appears in more than one layer, it will be
@@ -421,7 +423,7 @@ class Map(object):
         a single feature. Kartograph uses the geometry.union() method of shapely
         to do that.
         """
-        from geometry.utils import join_features
+        from .geometry.utils import join_features
 
         for layer in self.layers:
             if layer.options['join'] is not False:
@@ -517,7 +519,7 @@ class Map(object):
                         for feat in groupFeatures[g_id]:
                             exp[g_id].append(feat.props[join['export-ids']])
                     import json
-                    print json.dumps(exp)
+                    print(json.dumps(exp))
 
                 layer.features = res
 

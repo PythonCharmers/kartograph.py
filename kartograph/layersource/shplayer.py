@@ -1,11 +1,13 @@
+from __future__ import print_function
+from __future__ import absolute_import
 
-from layersource import LayerSource
+from .layersource import LayerSource
 from kartograph.errors import *
 from kartograph.geometry import BBox, create_feature
 from os.path import exists
 from osgeo.osr import SpatialReference
 import pyproj
-import shapefile
+from . import shapefile
 
 
 verbose = False
@@ -107,7 +109,7 @@ class ShapefileLayer(LayerSource):
                                 break
                             except:
                                 if verbose:
-                                    print 'warning: could not decode "%s" to %s' % (val, enc)
+                                    print('warning: could not decode "%s" to %s' % (val, enc))
                         if not decoded:
                             raise KartographError('having problems to decode the input data "%s"' % val)
                     if isinstance(val, (str, unicode)):
@@ -129,7 +131,7 @@ class ShapefileLayer(LayerSource):
                 feature = create_feature(geom, props)
                 res.append(feature)
         if bbox is not None and ignored > 0 and verbose:
-            print "-ignoring %d shapes (not in bounds %s )" % (ignored, bbox)
+            print("-ignoring %d shapes (not in bounds %s )" % (ignored, bbox))
         return res
 
 # # shape2geometry

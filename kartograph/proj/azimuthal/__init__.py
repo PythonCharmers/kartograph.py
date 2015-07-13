@@ -15,12 +15,13 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
+from __future__ import absolute_import
 
-from azimuthal import Azimuthal
-from ortho import Orthographic
-from laea import LAEA, P4_LAEA, LAEA_USA
-from stereo import Stereographic
-from satellite import Satellite
-from equi import EquidistantAzimuthal
+from .azimuthal import Azimuthal
+from .ortho import Orthographic
+from .laea import LAEA, P4_LAEA, LAEA_USA
+from .stereo import Stereographic
+from .satellite import Satellite
+from .equi import EquidistantAzimuthal
 
 __all__ = ['Azimuthal', 'Orthographic', 'LAEA', 'LAEA_USA', 'P4_LAEA', 'Stereographic', 'Satellite', 'EquidistantAzimuthal']

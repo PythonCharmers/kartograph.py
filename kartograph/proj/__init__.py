@@ -15,11 +15,13 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
+from __future__ import print_function
+from __future__ import absolute_import
 
 projections = dict()
 
-from base import Proj
-from cylindrical import *
+from .base import Proj
+from .cylindrical import *
 
 projections['lonlat'] = Equirectangular
 projections['cea'] = CEA
@@ -30,7 +32,7 @@ projections['balthasart'] = Balthasart
 projections['mercator'] = Mercator
 projections['ll'] = LonLat
 
-from pseudocylindrical import *
+from .pseudocylindrical import *
 
 projections['naturalearth'] = NaturalEarth
 projections['robinson'] = Robinson
@@ -47,7 +49,7 @@ projections['aitoff'] = Aitoff
 projections['winkel3'] = Winkel3
 projections['nicolosi'] = Nicolosi
 
-from azimuthal import *
+from .azimuthal import *
 
 projections['ortho'] = Orthographic
 projections['laea'] = LAEA
@@ -58,11 +60,11 @@ projections['satellite'] = Satellite
 projections['eda'] = EquidistantAzimuthal
 projections['aitoff'] = Aitoff
 
-from conic import *
+from .conic import *
 
 projections['lcc'] = LCC
 
-from proj4 import Proj4
+from .proj4 import Proj4
 
 projections['proj4'] = Proj4
 
@@ -78,7 +80,7 @@ if __name__ == '__main__':
     #assert (round(x,2),round(y,2)) == (3962799.45, -2999718.85), 'LAEA proj error'
     from kartograph.geometry import BBox
 
-    print Proj.fromXML(Robinson(lat0=3, lon0=4).toXML(), projections)
+    print(Proj.fromXML(Robinson(lat0=3, lon0=4).toXML(), projections))
 
     Robinson(lat0=3, lon0=4)
 
@@ -87,10 +89,10 @@ if __name__ == '__main__':
         bbox = BBox()
         try:
             proj = Proj(lon0=60)
-            print proj.project(0, 0)
-            print proj.world_bounds(bbox)
-            print proj.toXML()
+            print(proj.project(0, 0))
+            print(proj.world_bounds(bbox))
+            print(proj.toXML())
         except:
-            print 'Error', pj
-            print sys.exc_info()[0]
+            print('Error', pj)
+            print(sys.exc_info()[0])
             raise
